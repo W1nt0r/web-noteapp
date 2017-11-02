@@ -1,0 +1,35 @@
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>{{page-title}}</title>
+    <link rel="stylesheet" href="../public/stylesheets/fonts.css"/>
+    <link rel="stylesheet" href="../public/stylesheets/dark-sheet.css"/>
+    <link rel="stylesheet" href="../public/stylesheets/note-detail-stylesheet.css"/>
+</head>
+<body>
+<main>
+    <header>
+        <h1>{{page-title}}</h1>
+    </header>
+    <form method="post" action="">
+        <label for="noteTitle">Titel</label>
+        <input id="noteTitle" name="title" type="text" value="{{title}}" required/>
+        <label for="noteDescription">Beschreibung</label>
+        <textarea id="noteDescription" name="description" rows="4" required>{{description}}</textarea>
+        <label for="noteImportance">Wichtigkeit</label>
+        <input id="noteImportance" name="importance" type="number" min="1" max="5" value="{{importance}}" required/>
+        <label for="noteDueDate">Fertig bis</label>
+        <input id="noteDueDate" name="dueDate" type="datetime-local" value="{{dueDate}}" required/>
+        <label class="checkboxLabel">
+            <input name="done" type="checkbox" value="done" {{done}}/>
+            Erledigt!
+        </label>
+        <div class="buttons">
+            <input type="submit" value="Anlegen"/>
+            <a href="index.hbs">Abbruch</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>
