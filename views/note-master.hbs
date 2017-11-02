@@ -3,22 +3,30 @@
     <link rel="/stylesheets/master-sheets.css" type="text/css">
 </head>
 <div id="topWrapper">
-    <a href="" class="buttonLink" id="newNoteButton">Create new Note</a>
+    <a href="/notes" class="buttonLink" id="newNoteButton">Create new Note</a>
     <a href="" class="buttonLink" id="styleSwitchButton">Switch Style</a>
     <div id="sortWrapper">
-        <a href="" class="buttonLink" id="sortByFinishedButton">By finished Date</a>
-        <a href="" class="buttonLink" id="sortByCreateDateButton">By created Date</a>
-        <a href="" class="buttonLink" id="sortByImportanceButton">By importance</a>
+        <a href="?sort=dueDate" class="buttonLink" id="sortByDueDate">By due Date</a>
+        <a href="?sort=createdDate" class="buttonLink" id="sortByCreateDate">By created Date</a>
+        <a href="?sort=importance" class="buttonLink" id="sortByImportanceButton">By importance</a>
     </div>
-    <a href="" class="buttonLink" id="toggleFinishedButton">Show Finished</a>
+    <a href="?filter={{filerState}}" class="buttonLink" id="toggleFinishedButton">{{#if filteState}} Show {{else}} Hide{{/if}} Finished</a>
 </div>
-
+{{#if notes}}
 {{#each notes}}
-    <article class="note-view">
+    <div class="note-view">
         <p class="noteTitle">{{this.title}}</p>
         <p class="noteImportance importanceLevel{{importance}}"></p>
-        <div class="noteDone"><input type="checkbox"></div>
-        <textarea class="noteDescription">{{this.description}}</textarea>
+        <label class ="noteDone">
+            <input type="checkbox" value="done" name="done" {{#if this.done}} checked {{/if}}>
+            Done
+        </label>
+        <textarea class="noteDescription" readonly>{{this.description}}</textarea>
         <a href="" class="buttonLink noteEdit">Edit</a>
-    </article>
+    </div>
 {{/each}}
+    {{else}}
+    <div class="message">
+        No todos found
+    </div>
+{{/if}}

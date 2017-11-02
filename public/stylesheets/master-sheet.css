@@ -11,62 +11,48 @@ body {
     font-size: .9rem;
     padding: .5rem .8rem;
     margin: 0;
-    text-align: center;
-    color: #000000;
     text-decoration: none;
+    color: black;
+    text-align: center;
     cursor: pointer;
     width: 100%;
 }
 
-#topWrapper .buttonLink:hover {
-    background-color: aliceblue;
-
-}
-
-#topWrapper .buttonLink:active {
-    background-color: #dfdfdf;
-}
-
 .note-view {
     display: grid;
-    grid-template-areas:
-            "a b"
-            "c c"
-            "d d"
-            "e .";
+    grid-template-areas: "a b" "c c" "d d" "e .";
     border: 1px dotted darkgray;
+    padding: 0;
     justify-content: space-between;
     margin-top: 1em;
 }
 
-.note-view .noteTitle{
+.note-view .noteTitle {
     grid-area: a;
 }
 
-.noteImportance{
+.noteImportance {
+    justify-self: flex-end;
     grid-area: b;
 }
 
 .noteDescription {
-    grid-area: c;
+    grid-area: d;
     height: 5em;
     overflow: hidden;
     resize: vertical;
     min-height: 3em;
-
 }
 
 .noteDone {
-    grid-area: d;
+    grid-area: c;
 }
 
 .noteEdit {
     grid-area: e;
 }
 
-.noteDone::after {
-    content: "Done"
-}
+
 #topWrapper {
     display: grid;
     grid-template-areas: "a b" "c c" "d d";
@@ -97,28 +83,37 @@ body {
 
 /**importance levels **/
 .importanceLevel1::before {
-    content: "*";
+    content: "\2605";
 }
 
 .importanceLevel2::before {
-    content: "**";
+    content: "\2605\2605";
 }
 
 .importanceLevel3::before {
-    content: "***";
+    content: "\2605\2605\2605";
 }
 
 .importanceLevel4::before {
-    content: "****";
+    content: "\2605\2605\2605\2605";
 }
 
 .importanceLevel5::before {
-    content: "*****";
+    content: "\2605\2605\2605\2605\2605";
+}
+
+.message{
+    display: grid;
+    width: 100%;
+    box-sizing: border-box;
+    height: 4em;
+    align-content: center;
+    justify-content: center;
 }
 
 @media (min-width: 60rem) {
     #topWrapper {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 3fr 4fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: "a . b" "c . d";
         justify-content: space-between;
@@ -130,5 +125,8 @@ body {
 
     .note-view {
         border: none;
+        justify-content: space-between;
+        grid-template-columns: 1fr 3fr 3fr 1fr;
+        grid-template-areas: ". a b ." "c d d e";
     }
 }
