@@ -1,0 +1,22 @@
+@import "theme";
+
+$colorBackground: #FFFFFF;
+$colorFont: #333333;
+$colorBorder: #AAAAAA;
+$colorInputBackground: #FFFFFF;
+$colorInputFont: #333333;
+$colorButtonBackground: #FFFFFF;
+$colorButtonFont: #333333;
+$colorHover: #D5E9F8;
+$colorActive: #588CB2;
+
+@include theme (
+                $colorBackground,
+                $colorFont,
+                $colorBorder,
+                $colorInputBackground,
+                $colorInputFont,
+                $colorButtonBackground,
+                $colorButtonFont,
+                $colorHover,
+                $colorActive);

@@ -1,13 +1,3 @@
-<html lang="de">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>{{pagetitle}}</title>
-    <link rel="stylesheet" href="../public/stylesheets/fonts.css"/>
-    <link rel="stylesheet" href="../public/stylesheets/dark-sheet.css"/>
-    <link rel="stylesheet" href="../public/stylesheets/note-detail-stylesheet.css"/>
-</head>
-<body>
 <main>
     <header>
         <h1>{{pagetitle}}</h1>
@@ -20,16 +10,14 @@
         <label for="noteImportance">Wichtigkeit</label>
         <input id="noteImportance" name="importance" type="number" min="1" max="5" value="{{note.importance}}" required/>
         <label for="noteDueDate">Fertig bis</label>
-        <input id="noteDueDate" name="dueDate" type="datetime-local" value="{{formatDate note.dueDate "YYYY-MM-DDThh:mm"}}" required/>
+        <input id="noteDueDate" name="dueDate" type="datetime-local" value="{{formatDate note.dueDate "YYYY-MM-DDThh:mm"}}"/>
         <label class="checkboxLabel">
             <input name="done" type="checkbox" value="done" {{#if note.done}} checked {{/if}}/>
             Erledigt!
         </label>
         <div class="buttons">
             <input type="submit" value="Anlegen"/>
-            <a href="index.hbs">Abbruch</a>
+            <a class="buttonLink" href="index.hbs">Abbruch</a>
         </div>
     </form>
 </main>
-</body>
-</html>

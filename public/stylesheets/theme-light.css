@@ -1,0 +1,44 @@
+body {
+  background-color: #FFFFFF;
+  color: #333333; }
+
+header {
+  border-bottom: 1px solid #AAAAAA; }
+
+input, textarea {
+  border: 1px solid #AAAAAA;
+  background-color: #FFFFFF;
+  color: #333333; }
+
+input:hover, textarea:hover {
+  border: 1px solid #D5E9F8; }
+
+input:focus, textarea:focus {
+  border: 1px solid #588CB2; }
+
+input[type=submit], a.buttonLink {
+  background-color: #FFFFFF;
+  color: #333333;
+  border: 1px solid #AAAAAA; }
+
+input[type=submit]:hover, a.buttonLink:not(.checked):hover {
+  background-color: #D5E9F8; }
+
+input[type=submit]:active, a.buttonLink:not(.checked):active {
+  background-color: #588CB2;
+  border: 1px solid #D5E9F8; }
+
+.note-view {
+  border: 1px solid #AAAAAA; }
+
+.message {
+  border: 1px solid #588CB2;
+  background-color: #D5E9F8;
+  color: #588CB2; }
+
+a.buttonLink.checked {
+  background-color: #D5E9F8;
+  border: 1px solid #588CB2;
+  cursor: default; }
+
+/*# sourceMappingURL=theme-light.css.map */

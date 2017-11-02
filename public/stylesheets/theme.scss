@@ -1,0 +1,65 @@
+@mixin theme(
+  $colorBackground,
+  $colorFont,
+  $colorBorder,
+  $colorInputBackground,
+  $colorInputFont,
+  $colorButtonBackground,
+  $colorButtonFont,
+  $colorHover,
+  $colorActive
+) {
+  body {
+    background-color: $colorBackground;
+    color: $colorFont;
+  }
+
+  header {
+    border-bottom: 1px solid $colorBorder;
+  }
+
+  input, textarea {
+    border: 1px solid $colorBorder;
+    background-color: $colorInputBackground;
+    color: $colorInputFont;
+  }
+
+  input:hover, textarea:hover {
+    border: 1px solid $colorHover;
+  }
+
+  input:focus, textarea:focus {
+    border: 1px solid $colorActive;
+  }
+
+  input[type=submit], a.buttonLink {
+    background-color: $colorButtonBackground;
+    color: $colorButtonFont;
+    border: 1px solid $colorBorder;
+  }
+
+  input[type=submit]:hover, a.buttonLink:not(.checked):hover {
+    background-color: $colorHover;
+  }
+
+  input[type=submit]:active, a.buttonLink:not(.checked):active {
+    background-color: $colorActive;
+    border: 1px solid $colorHover;
+  }
+
+  .note-view {
+    border: 1px solid $colorBorder;
+  }
+
+  .message {
+    border: 1px solid $colorActive;
+    background-color: $colorHover;
+    color: $colorActive;
+  }
+
+  a.buttonLink.checked {
+    background-color: $colorHover;
+    border: 1px solid $colorActive;
+    cursor: default;
+  }
+}

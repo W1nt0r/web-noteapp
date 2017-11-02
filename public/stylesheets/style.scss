@@ -1,0 +1,208 @@
+@import "fonts.css";
+
+/* Regular */
+html {
+  font-family: "Roboto-Regular", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin: 1rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/* Notes */
+.note-view {
+  display: grid;
+  grid-template-areas: "a b" "c c" "d d" "e .";
+  padding: .5rem;
+  justify-content: space-between;
+  margin-top: 1em;
+  grid-column-gap: 1rem;
+}
+
+.note-view > .noteTitle {
+  grid-area: a;
+  margin: 0;
+}
+
+.note-view > .noteImportance {
+  justify-self: flex-end;
+  grid-area: b;
+  margin: 0;
+}
+
+.note-view > .noteDescription {
+  grid-area: d;
+  margin: 0;
+}
+
+.note-view > .noteDone {
+  grid-area: c;
+}
+
+.note-view > .noteEdit {
+  grid-area: e;
+  align-self: center;
+}
+
+#topWrapper {
+  display: grid;
+  grid-template-areas: "a b" "c c" "d d";
+  justify-content: space-between;
+}
+
+#newNoteButton {
+  grid-area: a;
+}
+
+#styleSwitchButton {
+  grid-area: b;
+}
+
+#sortWrapper {
+  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  grid-area: c;
+  padding: 0;
+}
+
+#toggleFinishedButton {
+  grid-area: d;
+}
+
+/**importance levels **/
+.importanceLevel1::before {
+  content: "\2605";
+}
+
+.importanceLevel2::before {
+  content: "\2605\2605";
+}
+
+.importanceLevel3::before {
+  content: "\2605\2605\2605";
+}
+
+.importanceLevel4::before {
+  content: "\2605\2605\2605\2605";
+}
+
+.importanceLevel5::before {
+  content: "\2605\2605\2605\2605\2605";
+}
+
+.message {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+label {
+  font-weight: bold;
+}
+
+label.checkboxLabel {
+  font-weight: normal;
+}
+
+input[type=checkbox] {
+  width: auto;
+}
+
+input, textarea {
+  border-radius: 3px;
+  margin: .5rem 0 1.5rem 0;
+  padding: .5rem .8rem;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  height: 5em;
+  min-height: 3em;
+}
+
+input[type=submit], a.buttonLink {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: auto;
+  font-size: .9rem;
+  padding: .5rem .8rem;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 30rem) {
+  input[type=submit], a.buttonLink {
+    width: 10rem;
+  }
+  #topWrapper a.buttonLink {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  form {
+    grid-template-columns: 1fr 4fr;
+    grid-gap: 2rem;
+  }
+  label {
+    text-align: right;
+    align-self: baseline;
+    margin-top: .5rem;
+  }
+  label.checkboxLabel {
+    grid-column-start: 2;
+    text-align: left;
+  }
+  div.buttons {
+    grid-column-start: 2;
+  }
+  input, textarea {
+    margin: 0;
+  }
+
+  #topWrapper {
+    grid-template-columns: 3fr 4fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "a . b" "c . d";
+    justify-content: space-between;
+  }
+  #topWrapper a.buttonLink {
+    width: 10rem;
+  }
+
+  #sortWrapper {
+    flex-direction: row;
+  }
+
+  .note-view {
+    border: none;
+    justify-content: space-between;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    grid-template-areas: ". a b ." "c d d e";
+  }
+}

@@ -1,0 +1,44 @@
+body {
+  background-color: #333333;
+  color: #FFFFFF; }
+
+header {
+  border-bottom: 1px solid #AAAAAA; }
+
+input, textarea {
+  border: 1px solid #AAAAAA;
+  background-color: #000000;
+  color: #FFFFFF; }
+
+input:hover, textarea:hover {
+  border: 1px solid #FF9C09; }
+
+input:focus, textarea:focus {
+  border: 1px solid #FFEDD4; }
+
+input[type=submit], a.buttonLink {
+  background-color: #000000;
+  color: #FFFFFF;
+  border: 1px solid #AAAAAA; }
+
+input[type=submit]:hover, a.buttonLink:not(.checked):hover {
+  background-color: #FF9C09; }
+
+input[type=submit]:active, a.buttonLink:not(.checked):active {
+  background-color: #FFEDD4;
+  border: 1px solid #FF9C09; }
+
+.note-view {
+  border: 1px solid #AAAAAA; }
+
+.message {
+  border: 1px solid #FFEDD4;
+  background-color: #FF9C09;
+  color: #FFEDD4; }
+
+a.buttonLink.checked {
+  background-color: #FF9C09;
+  border: 1px solid #FFEDD4;
+  cursor: default; }
+
+/*# sourceMappingURL=theme-dark.css.map */
