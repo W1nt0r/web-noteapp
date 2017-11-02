@@ -4,12 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const hbs = require("hbs");
+const moment = require('moment-timezone');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var notemaster = require('./routes/note-master');
+const notes = require('./routes/notesRoutes');
 
 var app = express();
+
+hbs.registerHelper('formatDate', (date, format) => {
+    return moment(date).tz("Europe/Zurich").format(format);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,8 +36,9 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+app.use("/", notes);
+//app.use('/', index);
+//app.use('/users', users);
 app.use('/note-master', notemaster);
 
 // catch 404 and forward to error handler
