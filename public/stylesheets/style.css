@@ -125,6 +125,38 @@ input[type=submit], a.buttonLink {
   text-decoration: none;
   cursor: pointer; }
 
+main.error {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  main.error pre, main.error .error-img, main.error h1, main.error h2 {
+    margin: .5rem 0; }
+  main.error header {
+    border: none;
+    align-self: center;
+    margin: 0; }
+  main.error h1 {
+    font-size: 5rem; }
+  main.error h2 {
+    text-align: center;
+    font-weight: 100; }
+  main.error .error-img {
+    display: block;
+    height: 10rem;
+    width: 10rem;
+    align-self: center; }
+  main.error pre {
+    white-space: pre-wrap;
+    /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word; }
+
 @media screen and (min-width: 30rem) {
   input[type=submit], a.buttonLink {
     width: 10rem; }
@@ -167,6 +199,10 @@ input[type=submit], a.buttonLink {
     border: none;
     justify-content: space-between;
     grid-template-columns: 1fr 3fr 3fr 1fr;
-    grid-template-areas: ". a b ." "c d d e"; } }
+    grid-template-areas: ". a b ." "c d d e"; }
+
+  main.error .error-img {
+    width: 20rem;
+    height: 20rem; } }
 
 /*# sourceMappingURL=style.css.map */

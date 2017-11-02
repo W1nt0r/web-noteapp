@@ -41,4 +41,7 @@ a.buttonLink.checked {
   border: 1px solid #FFEDD4;
   cursor: default; }
 
+main .error-img {
+  fill: #FFFFFF; }
+
 /*# sourceMappingURL=theme-dark.css.map */
