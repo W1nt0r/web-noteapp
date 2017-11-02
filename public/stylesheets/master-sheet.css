@@ -20,7 +20,7 @@ body {
 
 .note-view {
     display: grid;
-    grid-template-areas: "a b" "c c" "d d" "e .";
+    grid-template-areas: "title importance" "done done" "description description" "edit .";
     border: 1px dotted darkgray;
     padding: 0;
     justify-content: space-between;
@@ -28,16 +28,16 @@ body {
 }
 
 .note-view .noteTitle {
-    grid-area: a;
+    grid-area: title;
 }
 
 .noteImportance {
     justify-self: flex-end;
-    grid-area: b;
+    grid-area: importance;
 }
 
 .noteDescription {
-    grid-area: d;
+    grid-area: description;
     height: 5em;
     overflow: hidden;
     resize: vertical;
@@ -45,40 +45,41 @@ body {
 }
 
 .noteDone {
-    grid-area: c;
+    justify-self: center;
+    grid-area: done;
 }
 
 .noteEdit {
-    grid-area: e;
+    grid-area: edit;
 }
 
 
 #topWrapper {
     display: grid;
-    grid-template-areas: "a b" "c c" "d d";
+    grid-template-areas: "newNoteButton styleSwitchButton" "sortWrapper sortWrapper" "toggleFinishedButton toggleFinishedButton";
     justify-content: space-between;
     grid-column-gap: 2px;
     grid-row-gap: 2px;
 }
 
 #newNoteButton {
-    grid-area: a;
+    grid-area: newNoteButton;
 }
 
 #styleSwitchButton {
-    grid-area: b;
+    grid-area: styleSwitchButton;
 }
 
 #sortWrapper {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
-    grid-area: c;
+    grid-area: sortWrapper;
     padding: 0;
 }
 
 #toggleFinishedButton {
-    grid-area: d;
+    grid-area: toggleFinishedButton;
 }
 
 /**importance levels **/
@@ -115,7 +116,7 @@ body {
     #topWrapper {
         grid-template-columns: 3fr 4fr 1fr;
         grid-template-rows: 1fr 1fr;
-        grid-template-areas: "a . b" "c . d";
+        grid-template-areas: "newNoteButton . styleSwitchButton" "sortWrapper . toggleFinishedButton";
         justify-content: space-between;
     }
 
@@ -127,6 +128,6 @@ body {
         border: none;
         justify-content: space-between;
         grid-template-columns: 1fr 3fr 3fr 1fr;
-        grid-template-areas: ". a b ." "c d d e";
+        grid-template-areas: ". title importance ." "done description description edit";
     }
 }
