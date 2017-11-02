@@ -1,0 +1,39 @@
+/*
+#3B3B3B
+#FFB446
+#FF9C09
+#0067B2
+#59B9FF
+*/
+
+body {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+header {
+    border-bottom: 1px solid #aaaaaa;
+}
+
+input, textarea {
+    border: 1px solid #aaaaaa;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid #0067B2;
+}
+
+div.buttons > input, div.buttons > a {
+    background-color: #ffffff;
+    border: 1px solid #aaaaaa;
+}
+
+div.buttons > input:hover, div.buttons > a:hover {
+    background-color: #dddddd;
+}
+
+div.buttons > input:active, div.buttons > a:active {
+    background-color: #aaaaaa;
+    border: 1px solid #0067B2;
+    box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.1);
+}
