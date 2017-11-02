@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 1em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.buttonLink {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-size: .9rem;
+    padding: .5rem .8rem;
+    margin: 0;
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#topWrapper .buttonLink:hover {
+    background-color: aliceblue;
+
+}
+
+#topWrapper .buttonLink:active {
+    background-color: #dfdfdf;
+}
+
+.note-view {
+    display: grid;
+    grid-template-areas:
+            "a b"
+            "c c"
+            "d d"
+            "e .";
+    border: 1px dotted darkgray;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.note-view .noteTitle{
+    grid-area: a;
+}
+
+.noteImportance{
+    grid-area: b;
+}
+
+.noteDescription {
+    grid-area: c;
+    height: 5em;
+    overflow: hidden;
+    resize: vertical;
+    min-height: 3em;
+
+}
+
+.noteDone {
+    grid-area: d;
+}
+
+.noteEdit {
+    grid-area: e;
+}
+
+.noteDone::after {
+    content: "Done"
+}
+#topWrapper {
+    display: grid;
+    grid-template-areas: "a b" "c c" "d d";
+    justify-content: space-between;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+}
+
+#newNoteButton {
+    grid-area: a;
+}
+
+#styleSwitchButton {
+    grid-area: b;
+}
+
+#sortWrapper {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    grid-area: c;
+    padding: 0;
+}
+
+#toggleFinishedButton {
+    grid-area: d;
+}
+
+/**importance levels **/
+.importanceLevel1::before {
+    content: "*";
+}
+
+.importanceLevel2::before {
+    content: "**";
+}
+
+.importanceLevel3::before {
+    content: "***";
+}
+
+.importanceLevel4::before {
+    content: "****";
+}
+
+.importanceLevel5::before {
+    content: "*****";
+}
+
+@media (min-width: 60rem) {
+    #topWrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "a . b" "c . d";
+        justify-content: space-between;
+    }
+
+    #sortWrapper {
+        flex-direction: row;
+    }
+
+    .note-view {
+        border: none;
+    }
+}

@@ -1,0 +1,24 @@
+
+<head>
+    <link rel="/stylesheets/master-sheets.css" type="text/css">
+</head>
+<div id="topWrapper">
+    <a href="" class="buttonLink" id="newNoteButton">Create new Note</a>
+    <a href="" class="buttonLink" id="styleSwitchButton">Switch Style</a>
+    <div id="sortWrapper">
+        <a href="" class="buttonLink" id="sortByFinishedButton">By finished Date</a>
+        <a href="" class="buttonLink" id="sortByCreateDateButton">By created Date</a>
+        <a href="" class="buttonLink" id="sortByImportanceButton">By importance</a>
+    </div>
+    <a href="" class="buttonLink" id="toggleFinishedButton">Show Finished</a>
+</div>
+
+{{#each notes}}
+    <article class="note-view">
+        <p class="noteTitle">{{this.title}}</p>
+        <p class="noteImportance importanceLevel{{importance}}"></p>
+        <div class="noteDone"><input type="checkbox"></div>
+        <textarea class="noteDescription">{{this.description}}</textarea>
+        <a href="" class="buttonLink noteEdit">Edit</a>
+    </article>
+{{/each}}
