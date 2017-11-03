@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const hbs = require("hbs");
 const moment = require('moment-timezone');
+const session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -28,6 +29,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(session({secret: "N0te_aPp-W3d", resave: false, saveUninitialized: true }));
 app.use(require('node-sass-middleware')({
     src: path.join(__dirname, 'public'),
     dest: path.join(__dirname, 'public'),
@@ -37,9 +39,23 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/", notes);
+app.use("/stylesheets/theme-choose.css", (req, res) => {
+    if(req.session.theme) {
+        let theme = req.session.theme;
+        if(theme == "dark") {
+            res.sendFile(__dirname + "/public/stylesheets/theme-dark.css");
+        } else {
+            res.sendFile(__dirname + "/public/stylesheets/theme-light.css");
+        }
+    } else {
+        req.session.theme = "light";
+        res.sendFile(__dirname + "/public/stylesheets/theme-light.css");
+    }
+});
+
 //app.use('/', index);
 //app.use('/users', users);
-app.use('/note-master', notemaster);
+//app.use('/note-master', notemaster);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

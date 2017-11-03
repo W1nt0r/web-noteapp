@@ -4,11 +4,11 @@
         <a href="?style={{style}}" class="buttonLink" id="styleSwitchButton">Switch Style</a>
         <div id="sortWrapper">
             <a href="?sort=dueDate" class="buttonLink" id="sortByDueDate">By due Date</a>
-            <a href="?sort=createdDate" class="buttonLink" id="sortByCreateDate">By created Date</a>
+            <a href="?sort=creationDate" class="buttonLink" id="sortByCreateDate">By created Date</a>
             <a href="?sort=importance" class="buttonLink checked" id="sortByImportanceButton">By importance</a>
         </div>
-        <a href="?filter={{filterState}}" class="buttonLink" id="toggleFinishedButton">{{#if filteState}}
-            Show {{else}} Hide{{/if}} Finished</a>
+        <a href="?filter={{filterState}}" class="buttonLink" id="toggleFinishedButton">{{#if filterState}}
+            Hide {{else}} Show{{/if}} Finished</a>
     </div>
     {{#if notes}}
         {{#each notes}}

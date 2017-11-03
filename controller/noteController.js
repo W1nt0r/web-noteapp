@@ -1,8 +1,23 @@
-const moment = require("moment-timezone");
 const noteModel = require("../service/note.js");
 
 module.exports.showIndex = function(req, res) {
-    res.render("dummyindex");
+    let sort = getSortCriteria(req);
+    let nextTheme = getNextTheme(req);
+    console.log(sort);
+    let filter = {};
+    let isFiltered = isFilter(req);
+    if(isFiltered) {
+        filter["done"] = false;
+    }
+
+    noteModel.all(filter, sort, (err, notes) => {
+        if(err) {
+            //show/render errors
+        } else {
+            res.render("note-master", {notes: notes, filterState: !isFiltered, style: nextTheme});
+        }
+    });
+
 };
 
 module.exports.showNewNote = function (req, res) {
@@ -14,8 +29,6 @@ module.exports.showEditNote = function (req, res) {
         if(err) {
             //show/render errors
         } else {
-            console.log(note.dueDate);
-
             res.render("note-detail", {pagetitle: "Ändere Todo", note: note});
         }
     });
@@ -27,7 +40,7 @@ module.exports.createNote = function(req, res) {
             if(err) {
                 //show/render errors
             } else {
-                res.render("dummyindex", {pagetitle: "MyPagetitle New"});
+                res.redirect("/");
             }
         });
     });
@@ -41,7 +54,7 @@ module.exports.updateNote = function (req, res) {
             } else {
                 console.log(note.dueDate);
 
-                res.render("dummyindex", {pagetitle: "MyPagetitle Update"})
+                res.redirect("/");
             }
         });
     });
@@ -54,7 +67,8 @@ function noteChangeHelper(req, res, callback) {
         let title = req.body.title;
         let description = req.body.description;
         let importance = Number(req.body.importance);
-        let dueDate = moment(req.body.dueDate).tz("Europe/Zurich").toDate();
+        //let dueDate = moment(req.body.dueDate).tz("Europe/Zurich").toDate();
+        let dueDate = req.body.dueDate;
         let done = false;
         let id = null;
 
@@ -72,6 +86,73 @@ function noteChangeHelper(req, res, callback) {
     }
 }
 
+function getNextTheme(req) {
+    if(req.query.style) {
+        req.session.theme = req.query.style;
+
+        if(req.query.style == "dark") {
+            return "light";
+        }
+    }
+
+    if(req.session.theme == "dark") {
+        return "light";
+    } else {
+        return "dark";
+    }
+}
+
+function isFilter(req) {
+    if(req.query.filter) {
+        if(req.query.filter.length != 0) {
+            let value = (req.query.filter == "true");
+            req.session.filter = value;
+
+            return value;
+        }
+    }
+
+    if(req.session.filter) {
+        return req.session.filter;
+    }
+
+    return false;
+}
+
+function getSortCriteria(req) {
+    let sort = {};
+    prepareSortCriterias(req);
+
+    if(req.session.sort.length != 0) {
+        let fieldName = req.session.sort[0];
+        let ascDesc = req.session.sort[1];
+
+        sort[fieldName] = ascDesc;
+    }
+
+    return sort;
+}
+
+function prepareSortCriterias(req) {
+    if(req.query.sort) {
+        let sort = req.query.sort;
+
+        if(!req.session.sort) {
+            req.session.sort = [sort, 1];
+        } else {
+            if(req.session.sort[0] == sort) {
+                req.session.sort[1] = -req.session.sort[1];
+            } else {
+                req.session.sort = [sort, 1];
+            }
+        }
+    } else {
+        if(!req.session.sort) {
+            req.session.sort = [];
+        }
+    }
+}
+
 function validateNoteFields(params) {
     let errMsg = [];
 
@@ -86,8 +167,14 @@ function validateNoteFields(params) {
     if(!params.importance || params.importance == "") {
         errMsg.push("Importance is not set");
     } else {
-        if(isNaN(Number(params.importance))) {
+        let importance = Number(params.importance);
+        
+        if(isNaN(importance)) {
             errMsg.push("Importance is not a number");
+        } else {
+            if(importance < 1 || importance > 5) {
+                errMsg.push("Importance is out of bound [1;5]: " + importance);
+            }
         }
     }
 
