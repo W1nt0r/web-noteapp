@@ -15,6 +15,7 @@
             <div class="note-view">
                 <p class="noteTitle">{{this.title}}</p>
                 <p class="noteImportance importanceLevel{{importance}}"></p>
+                <p class="dueDate">{{dueDate}}</p>
                 <label class="noteDone">
                     <input type="checkbox" value="done" name="done" {{#if this.done}} checked {{/if}} disabled>
                     Done

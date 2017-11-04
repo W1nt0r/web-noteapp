@@ -20,52 +20,68 @@ h1 {
 /* Notes */
 .note-view {
   display: grid;
-  grid-template-areas: "a b" "c c" "d d" "e .";
+  grid-template-areas: "dueDate importance" "title ." "done ." "description description" "edit .";
   padding: .5rem;
   justify-content: space-between;
   margin-top: 1em;
   grid-column-gap: 1rem; }
 
 .note-view > .noteTitle {
-  grid-area: a;
+  align-self: flex-end;
+  grid-area: title;
   margin: 0; }
 
 .note-view > .noteImportance {
+  align-self: flex-end;
   justify-self: flex-end;
-  grid-area: b;
+  grid-area: importance;
   margin: 0; }
 
+.note-view > .dueDate {
+  padding: 0;
+  margin: 0;
+  align-self: flex-end;
+  justify-self: flex-start;
+  grid-area: dueDate; }
+
 .note-view > .noteDescription {
-  grid-area: d;
+  grid-area: description;
   margin: 0; }
 
 .note-view > .noteDone {
-  grid-area: c; }
+  margin: 0;
+  padding: 0;
+  grid-area: done;
+  align-content: flex-end; }
+
+.note-view > .noteDone > input {
+  margin: 0;
+  padding: 0; }
 
 .note-view > .noteEdit {
-  grid-area: e;
+  grid-area: edit;
   align-self: center; }
 
 #topWrapper {
   display: grid;
-  grid-template-areas: "a b" "c c" "d d";
+  grid-template-areas: "newNoteButton styleSwitchButton" "sortWrapper sortWrapper" "toggleFinishedButton toggleFinishedButton";
   justify-content: space-between; }
 
 #newNoteButton {
-  grid-area: a; }
+  grid-area: newNoteButton; }
 
 #styleSwitchButton {
-  grid-area: b; }
+  grid-area: styleSwitchButton; }
 
 #sortWrapper {
   grid-template-columns: 1fr;
   display: flex;
   flex-direction: column;
-  grid-area: c;
+  grid-area: sortWrapper;
   padding: 0; }
 
 #toggleFinishedButton {
-  grid-area: d; }
+  grid-area: toggleFinishedButton; }
 
 /**importance levels **/
 .importanceLevel1::before {
@@ -186,7 +202,7 @@ main.error {
   #topWrapper {
     grid-template-columns: 3fr 4fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: "a . b" "c . d";
+    grid-template-areas: "newNoteButton . styleSwitchButton" "sortWrapper . toggleFinishedButton";
     justify-content: space-between; }
 
   #topWrapper a.buttonLink {
@@ -199,7 +215,7 @@ main.error {
     border: none;
     justify-content: space-between;
     grid-template-columns: 1fr 3fr 3fr 1fr;
-    grid-template-areas: ". a b ." "c d d e"; }
+    grid-template-areas: "dueDate title importance ." "done description description edit"; }
 
   main.error .error-img {
     width: 20rem;
