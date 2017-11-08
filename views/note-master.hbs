@@ -3,9 +3,9 @@
         <a href="/notes" class="buttonLink" id="newNoteButton">Create new Note</a>
         <a href="?style={{style}}" class="buttonLink" id="styleSwitchButton">Switch Style</a>
         <div id="sortWrapper">
-            <a href="?sort=dueDate" class="buttonLink" id="sortByDueDate">By due Date</a>
-            <a href="?sort=creationDate" class="buttonLink" id="sortByCreateDate">By created Date</a>
-            <a href="?sort=importance" class="buttonLink checked" id="sortByImportanceButton">By importance</a>
+            <a href="?sort=dueDate" class="buttonLink {{#if sortStates.dueDate}}checked{{/if}}" id="sortByDueDate">By due Date</a>
+            <a href="?sort=creationDate" class="buttonLink {{#if sortStates.creationDate}}checked{{/if}}" id="sortByCreateDate">By created Date</a>
+            <a href="?sort=importance" class="buttonLink {{#if sortStates.importance}}checked{{/if}}" id="sortByImportanceButton">By importance</a>
         </div>
         <a href="?filter={{filterState}}" class="buttonLink" id="toggleFinishedButton">{{#if filterState}}
             Hide {{else}} Show{{/if}} Finished</a>
