@@ -8,9 +8,6 @@ const hbs = require("hbs");
 const moment = require('moment-timezone');
 const session = require('express-session');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var notemaster = require('./routes/note-master');
 const notes = require('./routes/notesRoutes');
 
 var app = express();
@@ -52,10 +49,6 @@ app.use("/stylesheets/theme-choose.css", (req, res) => {
         res.sendFile(__dirname + "/public/stylesheets/theme-light.css");
     }
 });
-
-//app.use('/', index);
-//app.use('/users', users);
-//app.use('/note-master', notemaster);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
