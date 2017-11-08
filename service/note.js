@@ -39,10 +39,6 @@ function updateNote(id, title, description, importance, dueDate, done, callback)
 
 }
 
-function removeNote(id, callback) {
-    db.remove({_id: id}, {}, callback);
-}
-
 function getNote(id, callback) {
     db.findOne({_id: id}, callback);
 }
@@ -55,4 +51,4 @@ function validateDueDate(creationDate, dueDate) {
     return creationDate <= dueDate;
 }
 
-module.exports = {add : addNote, delete : removeNote, get : getNote, all : getAll , update: updateNote };
+module.exports = {add : addNote, get : getNote, all : getAll , update: updateNote };

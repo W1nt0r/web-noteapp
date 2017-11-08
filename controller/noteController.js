@@ -13,7 +13,8 @@ module.exports.showIndex = function (req, res) {
 
     noteModel.all(filter, sort, (err, notes) => {
         if (err) {
-            //show/render errors
+            let err = new Error("A error while loading the Notes occured. Please try again later");
+            res.render("error", {error: err, message: err.message});
         } else {
             res.render("note-master", {notes: notes, filterState: !isFiltered, style: nextTheme, sortStates: sortStates});
         }
@@ -28,7 +29,8 @@ module.exports.showNewNote = function (req, res) {
 module.exports.showEditNote = function (req, res) {
     noteModel.get(req.params.id, (err, note) => {
         if (err) {
-            //show/render errors
+            let err = new Error("A error while loading the Note occured. Please try again later");
+            res.render("error", {error: err, message: err.message});
         } else {
             res.render("note-detail", {pagetitle: "Ändere Todo", note: note});
         }
@@ -39,7 +41,8 @@ module.exports.createNote = function (req, res) {
     noteChangeHelper(req, res, (title, description, importance, dueDate, done) => {
         noteModel.add(title, description, importance, dueDate, done, (err, newNotes) => {
             if (err) {
-                //show/render errors
+                let err = new Error("A error while creating the Notes occured. Please try again later");
+                res.render("error", {error: err, message: err.message});
             } else {
                 res.redirect("/");
             }
@@ -51,7 +54,8 @@ module.exports.updateNote = function (req, res) {
     noteChangeHelper(req, res, (title, description, importance, dueDate, done, id) => {
         noteModel.update(id, title, description, importance, dueDate, done, (err, note) => {
             if (err) {
-                //show/render errors
+                let err = new Error("A error while updating the Notes occured. Please try again later");
+                res.render("error", {error: err, message: err.message});
             } else {
                 console.log(note.dueDate);
 
@@ -68,7 +72,6 @@ function noteChangeHelper(req, res, callback) {
         let title = req.body.title;
         let description = req.body.description;
         let importance = Number(req.body.importance);
-        //let dueDate = moment(req.body.dueDate).tz("Europe/Zurich").toDate();
         let dueDate = req.body.dueDate;
         let done = false;
         let id = null;
@@ -83,7 +86,8 @@ function noteChangeHelper(req, res, callback) {
 
         callback(title, description, importance, dueDate, done, id);
     } else {
-        //show/render errors
+        let err = new Error("Some params weren't set correct: " + errMsg.join("\n"));
+        res.render("error", {message: err.message});
     }
 }
 
