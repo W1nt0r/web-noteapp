@@ -1,8 +1,8 @@
-@import "fonts.css";
+@import "fonts";
 
 /* Regular */
 html {
-  font-family: "Roboto-Regular", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -198,6 +198,7 @@ main.error {
     font-weight: 100;
   }
   .error-img {
+    padding: 10rem;
     display: block;
     height: 10rem;
     width: 10rem;
