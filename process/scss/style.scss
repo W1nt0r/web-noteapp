@@ -153,6 +153,7 @@ input, textarea {
   margin: .5rem 0 1.5rem 0;
   padding: .5rem .8rem;
   font-family: inherit;
+  justify-self: stretch;
 }
 
 textarea {
@@ -198,7 +199,6 @@ main.error {
     font-weight: 100;
   }
   .error-img {
-    padding: 10rem;
     display: block;
     height: 10rem;
     width: 10rem;

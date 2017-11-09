@@ -181,7 +181,8 @@ input, textarea {
   border-radius: 3px;
   margin: .5rem 0 1.5rem 0;
   padding: .5rem .8rem;
-  font-family: inherit; }
+  font-family: inherit;
+  justify-self: stretch; }
 
 textarea {
   resize: vertical;
@@ -219,7 +220,6 @@ main.error {
     text-align: center;
     font-weight: 100; }
   main.error .error-img {
-    padding: 10rem;
     display: block;
     height: 10rem;
     width: 10rem;
