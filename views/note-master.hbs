@@ -15,7 +15,7 @@
             <div class="note-view">
                 <p class="noteTitle">{{this.title}}</p>
                 <p class="noteImportance importanceLevel{{importance}}"></p>
-                <p class="dueDate">{{formatDate dueDate "DD.MM.YYYY hh:mm"}}</p>
+                <p class="dueDate">{{#unless this.done}}{{formatDate dueDate "DD.MM.YYYY hh:mm"}}{{/unless}}</p>
                 <label class="noteDone">
                     <input type="checkbox" value="done" name="done" {{#if this.done}} checked {{/if}} disabled>
                     Done
