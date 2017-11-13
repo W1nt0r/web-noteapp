@@ -41,6 +41,7 @@ a.buttonLink.checked {
   border: 1px solid #FFEDD4;
   cursor: default; }
 
+/* Change SVG-Color */
 main .error-img {
   fill: #FFFFFF; }
 
